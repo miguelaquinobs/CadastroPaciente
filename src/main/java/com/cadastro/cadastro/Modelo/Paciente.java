@@ -14,16 +14,16 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     private String nome;
 
-    @Column (nullable = false, unique = true, length = 14)
+    @Column(nullable = false, unique = true, length = 14)
     private String cpf;
 
-    @Column (length = 3)
+    @Column(length = 3)
     private String sangue;
 
     @Column
     private String alergia;
-    
+
 }

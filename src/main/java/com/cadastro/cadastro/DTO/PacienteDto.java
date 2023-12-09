@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,15 +19,15 @@ public class PacienteDto {
     private String sangue;
     private String alergia;
 
-    public PacienteDto(Paciente paciente){
-    this.id = paciente.getId();
-    this.nome = paciente.getNome();
-    this.sangue = paciente.getSangue();
-    this.alergia = paciente.getAlergia();
+    public PacienteDto(Paciente paciente) {
+        this.id = paciente.getId();
+        this.nome = paciente.getNome();
+        this.sangue = paciente.getSangue();
+        this.alergia = paciente.getAlergia();
     }
 
-    public static List<PacienteDto> convert (List<Paciente> paciente){
-    return paciente.stream().map(PacienteDto::new).collect(Collectors.toList());
+    public static List<PacienteDto> convert(List<Paciente> paciente) {
+        return paciente.stream().map(PacienteDto::new).collect(Collectors.toList());
     }
-    
+
 }

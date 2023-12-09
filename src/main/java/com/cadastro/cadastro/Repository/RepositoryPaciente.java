@@ -10,4 +10,6 @@ public interface RepositoryPaciente extends JpaRepository <Paciente,Long> {
 
     
 
+    
+
 }
