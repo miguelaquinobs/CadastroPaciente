@@ -27,14 +27,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequestMapping("/pacientes")
 public class PacienteController {
 
-    @Autowired
-    private RepositoryPaciente repository;
+
     @Autowired
     private PacienteService pacienteService;
 
     @GetMapping
     public List<PacienteDto> listar() {
-        List<Paciente> paciente = repository.findAll();
+        List<Paciente> paciente = pacienteService.listarPacientes();
         return PacienteDto.convert(paciente);
     }
 
@@ -50,16 +49,16 @@ public class PacienteController {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public void cadastrar(@RequestBody Paciente paciente) {
-        repository.save(paciente);
+        pacienteService.criarCadastro(paciente);
     }
 
     @PutMapping
     public void alterar(@RequestBody Paciente paciente) {
-        repository.save(paciente);
+        pacienteService.alterarPaciente(paciente);
     }
 
-    @DeleteMapping
-    public void deletar(@RequestBody Paciente paciente) {
-        repository.delete(paciente);
+    @DeleteMapping ("/{id}")
+    public void deletar(@PathVariable Long id) {
+        pacienteService.deletarPorId(id);
     }
 }

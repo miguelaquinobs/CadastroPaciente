@@ -1,5 +1,6 @@
 package com.cadastro.cadastro.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,20 @@ public class PacienteService {
     @Autowired
     private RepositoryPaciente repositoryPaciente;
 
+    public List<Paciente> listarPacientes() {
+        return repositoryPaciente.findAll();
+    }
+
     public Paciente criarCadastro(Paciente paciente) {
         return repositoryPaciente.save(paciente);
+    }
+
+    public void alterarPaciente(Paciente paciente) {
+        repositoryPaciente.save(paciente);
+    }
+
+    public void deletarPorId(Long id) {
+        repositoryPaciente.deleteById(id);
     }
 
     @Transactional
