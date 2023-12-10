@@ -35,7 +35,7 @@ public class PacienteService {
     }
 
     @Transactional
-    public Optional<PacienteDto> findDtoById(Long id) {
+    public Optional<PacienteDto> buscarPorId(Long id) {
         return repositoryPaciente.findById(id)
                 .map(paciente -> new PacienteDto(paciente.getId(), paciente.getNome(), paciente.getSangue(),
                         paciente.getAlergia()));
