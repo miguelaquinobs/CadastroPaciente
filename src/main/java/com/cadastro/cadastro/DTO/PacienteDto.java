@@ -1,14 +1,13 @@
 package com.cadastro.cadastro.DTO;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.cadastro.cadastro.Modelo.Paciente;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,15 +18,12 @@ public class PacienteDto {
     private String sangue;
     private String alergia;
 
-    public PacienteDto(Paciente paciente) {
-        this.id = paciente.getId();
-        this.nome = paciente.getNome();
-        this.sangue = paciente.getSangue();
-        this.alergia = paciente.getAlergia();
-    }
-
-    public static List<PacienteDto> convert(List<Paciente> paciente) {
-        return paciente.stream().map(PacienteDto::new).collect(Collectors.toList());
+    public static PacienteDto convert(Paciente paciente) {
+        return PacienteDto.builder()
+                .id(paciente.getId())
+                .nome(paciente.getNome())
+                .sangue(paciente.getSangue())
+                .alergia(paciente.getAlergia()).build();
     }
 
 }
